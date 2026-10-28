@@ -5,6 +5,7 @@ export interface LogEvent {
   os?: string
   browser?: string
   country?: string
+  region?: string
   city?: string
   latitude?: number
   longitude?: number

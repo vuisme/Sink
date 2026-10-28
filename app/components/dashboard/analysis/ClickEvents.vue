@@ -82,6 +82,8 @@ watch([query, retryKey], async ([currentQuery], _previous, onCleanup) => {
               <TableHead>{{ $t('dashboard.date') }}</TableHead>
               <TableHead>IP</TableHead>
               <TableHead>{{ $t('dashboard.metrics.country') }}</TableHead>
+              <TableHead>{{ $t('dashboard.metrics.region') }}</TableHead>
+              <TableHead>{{ $t('dashboard.metrics.city') }}</TableHead>
               <TableHead>{{ $t('dashboard.metrics.os') }}</TableHead>
               <TableHead>{{ $t('dashboard.metrics.browser') }}</TableHead>
             </TableRow>
@@ -95,6 +97,8 @@ watch([query, retryKey], async ([currentQuery], _previous, onCleanup) => {
               </TableCell>
               <TableCell>{{ event.ip || $t('dashboard.none') }}</TableCell>
               <TableCell>{{ event.country || $t('dashboard.none') }}</TableCell>
+              <TableCell>{{ event.region || $t('dashboard.none') }}</TableCell>
+              <TableCell>{{ event.city || $t('dashboard.none') }}</TableCell>
               <TableCell>{{ event.os || $t('dashboard.none') }}</TableCell>
               <TableCell>{{ event.browser || $t('dashboard.none') }}</TableCell>
             </TableRow>
