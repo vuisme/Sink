@@ -9,6 +9,8 @@ Analytics is **optional**. Without it, short links, login, and link management s
 
 The authenticated Realtime dashboard displays each recorded click's IP address alongside its link and time. IP addresses are also included in the authenticated `/api/logs/events` response. A VPN or proxy may replace the visitor's public IP, and Analytics Engine sampling can omit individual clicks.
 
+Each link's statistics page also includes a click history table with IP addresses, timestamps, countries, operating systems, and browsers. It shows up to the 100 latest recorded clicks within the selected date range.
+
 ## Turn it on (three things)
 
 You need all three:

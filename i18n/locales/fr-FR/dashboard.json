@@ -43,7 +43,10 @@
     "analysis": {
       "chart_summary": "{totalVisits} visites au total. Pic : {peakVisits} à {peakTime}.",
       "chart_summary_with_visitors": "{totalVisits} visites et {totalVisitors} visiteurs au total. Pic : {peakVisits} visites à {peakTime}.",
-      "locations_summary": "{totalVisits} visites dans {countryCount} zones."
+      "locations_summary": "{totalVisits} visites dans {countryCount} zones.",
+      "clicks_title": "Historique des clics",
+      "clicks_description": "Les 100 derniers clics enregistrés au maximum sur la période sélectionnée.",
+      "clicks_error": "Impossible de charger l’historique des clics."
     },
     "date_picker": {
       "today": "Aujourd'hui",

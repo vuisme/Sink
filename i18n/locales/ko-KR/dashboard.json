@@ -43,7 +43,10 @@
     "analysis": {
       "chart_summary": "총 {totalVisits}회 방문. 최고: {peakTime}에 {peakVisits}회.",
       "chart_summary_with_visitors": "총 {totalVisits}회 방문, 방문자 {totalVisitors}명. 최고: {peakTime}에 {peakVisits}회 방문.",
-      "locations_summary": "{countryCount}개 지역에서 {totalVisits}회 방문했습니다."
+      "locations_summary": "{countryCount}개 지역에서 {totalVisits}회 방문했습니다.",
+      "clicks_title": "클릭 기록",
+      "clicks_description": "선택한 기간에 기록된 최근 클릭을 최대 100개 표시합니다.",
+      "clicks_error": "클릭 기록을 불러오지 못했습니다."
     },
     "date_picker": {
       "today": "오늘",

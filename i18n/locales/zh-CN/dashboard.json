@@ -43,7 +43,10 @@
     "analysis": {
       "chart_summary": "共 {totalVisits} 次访问，峰值为 {peakTime} 的 {peakVisits} 次。",
       "chart_summary_with_visitors": "共 {totalVisits} 次访问、{totalVisitors} 位访客，峰值为 {peakTime} 的 {peakVisits} 次访问。",
-      "locations_summary": "{countryCount} 个地区共 {totalVisits} 次访问。"
+      "locations_summary": "{countryCount} 个地区共 {totalVisits} 次访问。",
+      "clicks_title": "点击记录",
+      "clicks_description": "显示所选日期范围内最近记录的最多 100 次点击。",
+      "clicks_error": "无法加载点击记录。"
     },
     "date_picker": {
       "today": "今天",

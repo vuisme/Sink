@@ -43,7 +43,10 @@
     "analysis": {
       "chart_summary": "Insgesamt {totalVisits} Besuche. Höchstwert: {peakVisits} um {peakTime}.",
       "chart_summary_with_visitors": "Insgesamt {totalVisits} Besuche und {totalVisitors} Besucher. Höchstwert: {peakVisits} Besuche um {peakTime}.",
-      "locations_summary": "{totalVisits} Besuche aus {countryCount} Regionen."
+      "locations_summary": "{totalVisits} Besuche aus {countryCount} Regionen.",
+      "clicks_title": "Klickverlauf",
+      "clicks_description": "Bis zu 100 zuletzt erfasste Klicks im ausgewählten Zeitraum.",
+      "clicks_error": "Der Klickverlauf konnte nicht geladen werden."
     },
     "date_picker": {
       "today": "Heute",
