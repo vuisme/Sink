@@ -86,6 +86,7 @@ watch([query, retryKey], async ([currentQuery], _previous, onCleanup) => {
               <TableHead>{{ $t('dashboard.metrics.city') }}</TableHead>
               <TableHead>{{ $t('dashboard.metrics.os') }}</TableHead>
               <TableHead>{{ $t('dashboard.metrics.browser') }}</TableHead>
+              <TableHead>User-Agent</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -101,6 +102,11 @@ watch([query, retryKey], async ([currentQuery], _previous, onCleanup) => {
               <TableCell>{{ event.city || $t('dashboard.none') }}</TableCell>
               <TableCell>{{ event.os || $t('dashboard.none') }}</TableCell>
               <TableCell>{{ event.browser || $t('dashboard.none') }}</TableCell>
+              <TableCell
+                class="max-w-sm min-w-64 wrap-anywhere whitespace-normal"
+              >
+                {{ event.ua || $t('dashboard.none') }}
+              </TableCell>
             </TableRow>
           </TableBody>
         </Table>
