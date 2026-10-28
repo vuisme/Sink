@@ -83,6 +83,7 @@ watch(error, value => emit('errorChange', value), { immediate: true })
           :key="item.id"
           :name="item.slug"
           :description="[item.os, item.browser].filter(Boolean).join(' ')"
+          :ip="item.ip"
           :icon="getFlag(item.country || '')"
           :time="item.timestamp"
           class="w-full"

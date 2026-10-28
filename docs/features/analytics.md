@@ -7,6 +7,8 @@ description: Turn on visit analytics, read charts and logs, understand near-real
 
 Analytics is **optional**. Without it, short links, login, and link management still work — charts, logs, and realtime stay empty.
 
+The authenticated Realtime dashboard displays each recorded click's IP address alongside its link and time. IP addresses are also included in the authenticated `/api/logs/events` response. A VPN or proxy may replace the visitor's public IP, and Analytics Engine sampling can omit individual clicks.
+
 ## Turn it on (three things)
 
 You need all three:

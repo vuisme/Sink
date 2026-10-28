@@ -29,7 +29,6 @@ function events2logs(events: WAEEvents[]) {
     return {
       ...blobs2logs(blobs),
       ...doubles2logs(doubles),
-      ip: undefined,
       id: `${baseId}_${occurrence}`,
       timestamp: Math.floor(new Date(`${event.timestamp}Z`).getTime() / 1000),
     }

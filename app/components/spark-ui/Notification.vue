@@ -5,6 +5,7 @@ const props = defineProps<{
   name: string
   class?: string
   description: string
+  ip?: string
   icon?: string
   time: number
 }>()
@@ -58,6 +59,9 @@ const dateTime = computed(() => new Date(props.time * 1000).toISOString())
           "
         >
           {{ props.description }}
+        </p>
+        <p v-if="props.ip" class="text-sm break-all text-muted-foreground">
+          IP: {{ props.ip }}
         </p>
       </div>
     </div>
