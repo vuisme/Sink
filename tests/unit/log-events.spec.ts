@@ -18,6 +18,16 @@ const mocks = vi.hoisted(() => {
 Object.assign(globalThis, { blobs2logs, blobsMap, doubles2logs, doublesMap })
 
 describe('access-log events response', () => {
+  it('returns visitor IDs, session IDs and client hints from the appended blob columns', async () => {
+    const visitorId = crypto.randomUUID()
+    const sessionId = crypto.randomUUID()
+    const clientHints = JSON.stringify({ 'sec-ch-ua-platform': '"Windows"' })
+    mocks.useWAE.mockResolvedValue({
+      data: [{ blob1: 'example', blob17: visitorId, blob18: sessionId, blob19: clientHints, timestamp: '2026-10-28 12:00:00' }],
+    })
+    expect((await handler({} as H3Event))[0]).toMatchObject({ visitorId, sessionId, clientHints })
+  })
+
   it.each(['192.0.2.42', '2001:db8::1234', ''])('preserves the recorded IP %j for each click', async (ip) => {
     mocks.useWAE.mockResolvedValue({
       data: [{ blob1: 'example', blob4: ip, timestamp: '2026-10-28 12:00:00' }],
@@ -29,6 +39,9 @@ describe('access-log events response', () => {
     expect(events[0]).toMatchObject({
       slug: 'example',
       ip,
+      visitorId: '',
+      sessionId: '',
+      clientHints: '',
       timestamp: Date.parse('2026-10-28T12:00:00Z') / 1000,
     })
   })

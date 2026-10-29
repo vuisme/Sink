@@ -3,6 +3,9 @@ export interface LogEvent {
   slug: string
   ip?: string
   ua?: string
+  visitorId?: string
+  sessionId?: string
+  clientHints?: string
   os?: string
   browser?: string
   country?: string

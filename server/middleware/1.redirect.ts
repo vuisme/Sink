@@ -205,7 +205,7 @@ export default eventHandler(async (event) => {
       if (isProxyLink) {
         return sendWebResponse(event, await proxyLinkRequest(event, finalTargetUrl, {
           method: formConfirmed ? 'GET' : event.method,
-          privateCache: !!(link.password || link.unsafe),
+          privateCache: !!(link.password || link.unsafe || accessLogResult),
         }))
       }
 

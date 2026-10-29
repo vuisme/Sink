@@ -5,6 +5,8 @@ const listQueryLimit = +useRuntimeConfig().listQueryLimit
 /** The access-log filters every analytics query shares. */
 export const FilterQuerySchema = z.object({
   id: z.string().optional(),
+  visitorId: z.uuid().optional(),
+  sessionId: z.uuid().optional(),
   startAt: z.coerce.number().int().safe().optional().describe('Start of the window, unix seconds.'),
   endAt: z.coerce.number().int().safe().optional().describe('End of the window, unix seconds.'),
   url: z.string().optional(),

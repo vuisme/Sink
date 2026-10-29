@@ -396,7 +396,8 @@ describe('/', () => {
     // Only the upstream CSP survives; the proxy must not add a sandbox.
     expect(response.headers.get('content-security-policy')).toBe('script-src https://upstream.example')
     expect(response.headers.get('x-content-type-options')).toBe('nosniff')
-    expect(response.headers.get('set-cookie')).toBeNull()
+    expect(response.headers.get('set-cookie')).not.toContain('session=evil')
+    expect(response.headers.get('cache-control')).toContain('no-store')
   })
 
   it('marks every proxied response nosniff without adding a CSP', async () => {

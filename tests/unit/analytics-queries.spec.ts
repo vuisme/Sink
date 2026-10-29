@@ -3,6 +3,7 @@ import type { FilterQuery, Query } from '../../shared/schemas/query'
 import { describe, expect, it, vi } from 'vitest'
 import {
   buildCountersQuery,
+  buildEventsQuery,
   buildHeatmapQuery,
   buildMetricsQuery,
   buildViewsQuery,
@@ -35,6 +36,9 @@ vi.mock('../../server/utils/access-log', async () => {
     blob14: 'device',
     blob15: 'deviceType',
     blob16: 'COLO',
+    blob17: 'visitorId',
+    blob18: 'sessionId',
+    blob19: 'clientHints',
   }
   const doublesMap = {
     double1: 'latitude',
@@ -54,6 +58,16 @@ const event = {} as H3Event
 const filters: FilterQuery = { slug: 'abc' }
 
 describe('analytics query builders', () => {
+  it('filters click history by visitor, session and multiple slugs', () => {
+    const visitorId = crypto.randomUUID()
+    const sessionId = crypto.randomUUID()
+    const compiled = compileAnalyticsQuery(buildEventsQuery({ slug: 'first,second', visitorId, sessionId, limit: 100 }, event))
+    expect(compiled).toContain('blob1 in (\'first\', \'second\')')
+    expect(compiled).toContain(`blob17 in ('${visitorId}')`)
+    expect(compiled).toContain(`blob18 in ('${sessionId}')`)
+    expect(compiled).toContain('order by timestamp desc limit 100')
+  })
+
   it('compiles counters without a LIMIT clause', () => {
     expect(compileAnalyticsQuery(buildCountersQuery(filters, event)))
       .toBe('select SUM(_sample_interval) as visits, ROUND(COUNT(DISTINCT blob4) * SUM(_sample_interval) / COUNT()) as visitors, ROUND(COUNT(DISTINCT blob5) * SUM(_sample_interval) / COUNT()) as referers from sink where blob1 in (\'abc\')')

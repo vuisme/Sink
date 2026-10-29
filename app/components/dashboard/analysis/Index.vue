@@ -54,6 +54,6 @@ const analysisStore = useDashboardAnalysisStore()
       <DashboardAnalysisHeatmap v-if="analysisStore.viewMode === 'heatmap'" :metric="analysisStore.heatmapMetric" />
     </TabsContent>
   </Tabs>
-  <DashboardAnalysisClickEvents v-if="link" :link="link" />
+  <DashboardAnalysisClickEvents :link="link" />
   <DashboardAnalysisMetrics />
 </template>
