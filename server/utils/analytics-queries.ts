@@ -139,6 +139,19 @@ export function buildEventsQuery(query: Query, event: H3Event) {
     .limit(sql.lit(query.limit))
 }
 
+export function buildClickExportQuery(query: StatsExportQuery, event: H3Event) {
+  return filteredQuery(query, event)
+    .select([
+      sql.ref('timestamp').as('timestamp_utc'),
+      sql.ref('index1').as('linkId'),
+      ...Object.entries(blobsMap).map(([column, name]) => sql.ref(column).as(name)),
+      ...Object.entries(doublesMap).map(([column, name]) => sql.ref(column).as(name)),
+      sql.ref('_sample_interval').as('sample_interval'),
+    ])
+    .orderBy('timestamp', 'desc')
+    .limit(sql`ALL`)
+}
+
 export function buildLocationsQuery(query: Query, event: H3Event) {
   // Use SUM(_sample_interval) instead of count() to account for sampling
   return filteredQuery(query, event)

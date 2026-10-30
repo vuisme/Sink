@@ -45,7 +45,10 @@
       "chart_summary_with_visitors": "총 {totalVisits}회 방문, 방문자 {totalVisitors}명. 최고: {peakTime}에 {peakVisits}회 방문.",
       "locations_summary": "{countryCount}개 지역에서 {totalVisits}회 방문했습니다.",
       "clicks_title": "클릭 기록",
-      "clicks_description": "선택한 기간에 기록된 최근 클릭을 최대 100개 표시합니다.",
+      "clicks_description": "최근 기록된 클릭 100개 미리보기입니다. 선택한 날짜와 필터에 해당하는 모든 가용 클릭을 내보냅니다. Cloudflare 샘플링과 3개월 보관 기간이 적용됩니다.",
+      "clicks_export": "모든 클릭 내보내기 (CSV)",
+      "clicks_exporting": "내보내는 중…",
+      "clicks_export_error": "클릭을 내보낼 수 없습니다. 다시 시도하세요.",
       "clicks_error": "클릭 기록을 불러오지 못했습니다."
     },
     "date_picker": {

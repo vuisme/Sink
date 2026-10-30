@@ -45,7 +45,10 @@
       "chart_summary_with_visitors": "{totalVisits} visite e {totalVisitors} visitatori totali. Picco: {peakVisits} visite alle {peakTime}.",
       "locations_summary": "{totalVisits} visite in {countryCount} aree.",
       "clicks_title": "Cronologia dei clic",
-      "clicks_description": "Fino ai 100 clic registrati più recenti nel periodo selezionato.",
+      "clicks_description": "Anteprima degli ultimi 100 clic registrati. Esporta tutti i clic disponibili per le date e i filtri selezionati. Cloudflare applica campionamento e conservazione di tre mesi.",
+      "clicks_export": "Esporta tutti i clic (CSV)",
+      "clicks_exporting": "Esportazione…",
+      "clicks_export_error": "Impossibile esportare i clic. Riprova.",
       "clicks_error": "Impossibile caricare la cronologia dei clic."
     },
     "date_picker": {

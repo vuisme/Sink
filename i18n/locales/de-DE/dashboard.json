@@ -45,7 +45,10 @@
       "chart_summary_with_visitors": "Insgesamt {totalVisits} Besuche und {totalVisitors} Besucher. Höchstwert: {peakVisits} Besuche um {peakTime}.",
       "locations_summary": "{totalVisits} Besuche aus {countryCount} Regionen.",
       "clicks_title": "Klickverlauf",
-      "clicks_description": "Bis zu 100 zuletzt erfasste Klicks im ausgewählten Zeitraum.",
+      "clicks_description": "Vorschau der letzten 100 Klicks. Export aller verfügbaren Klicks für den Zeitraum und die Filter. Cloudflare verwendet Stichproben und speichert Daten drei Monate.",
+      "clicks_export": "Alle Klicks exportieren (CSV)",
+      "clicks_exporting": "Export läuft…",
+      "clicks_export_error": "Klicks konnten nicht exportiert werden. Bitte erneut versuchen.",
       "clicks_error": "Der Klickverlauf konnte nicht geladen werden."
     },
     "date_picker": {

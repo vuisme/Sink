@@ -1,6 +1,20 @@
 import { describe, expect, it } from 'vitest'
 import { fetch, fetchWithAuth } from '../utils'
 
+describe('/api/logs/export', () => {
+  it('requires authentication for raw click exports', async () => {
+    expect((await fetch('/api/logs/export')).status).toBe(401)
+  })
+
+  it('rejects reversed date ranges', async () => {
+    expect((await fetchWithAuth('/api/logs/export?startAt=200&endAt=100')).status).toBe(400)
+  })
+
+  it('rejects invalid visitor filters', async () => {
+    expect((await fetchWithAuth('/api/logs/export?visitorId=invalid')).status).toBe(400)
+  })
+})
+
 describe('/api/logs/events', () => {
   it('returns events data with valid auth', async () => {
     const response = await fetchWithAuth('/api/logs/events?slug=0&limit=10')

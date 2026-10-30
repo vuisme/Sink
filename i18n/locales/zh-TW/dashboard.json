@@ -45,7 +45,10 @@
       "chart_summary_with_visitors": "共 {totalVisits} 次造訪、{totalVisitors} 位訪客，峰值為 {peakTime} 的 {peakVisits} 次造訪。",
       "locations_summary": "{countryCount} 個地區共 {totalVisits} 次造訪。",
       "clicks_title": "點擊記錄",
-      "clicks_description": "顯示所選日期範圍內最近記錄的最多 100 次點擊。",
+      "clicks_description": "預覽最近記錄的 100 次點擊。匯出符合所選日期和篩選條件的所有可用記錄。Cloudflare 會進行取樣，資料保留三個月。",
+      "clicks_export": "匯出全部點擊 (CSV)",
+      "clicks_exporting": "正在匯出…",
+      "clicks_export_error": "無法匯出點擊記錄，請重試。",
       "clicks_error": "無法載入點擊記錄。"
     },
     "date_picker": {

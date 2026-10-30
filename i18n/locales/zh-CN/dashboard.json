@@ -45,7 +45,10 @@
       "chart_summary_with_visitors": "共 {totalVisits} 次访问、{totalVisitors} 位访客，峰值为 {peakTime} 的 {peakVisits} 次访问。",
       "locations_summary": "{countryCount} 个地区共 {totalVisits} 次访问。",
       "clicks_title": "点击记录",
-      "clicks_description": "显示所选日期范围内最近记录的最多 100 次点击。",
+      "clicks_description": "预览最近记录的 100 次点击。导出符合所选日期和筛选条件的所有可用记录。Cloudflare 会进行采样，数据保留三个月。",
+      "clicks_export": "导出全部点击 (CSV)",
+      "clicks_exporting": "正在导出…",
+      "clicks_export_error": "无法导出点击记录，请重试。",
       "clicks_error": "无法加载点击记录。"
     },
     "date_picker": {

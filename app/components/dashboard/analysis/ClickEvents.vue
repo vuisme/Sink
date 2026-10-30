@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import type { LogEvent } from '#shared/types/events'
 import type { Link } from '@/types'
+import { Download, Loader } from '@lucide/vue'
+import { toast } from 'vue-sonner'
+import { createExportFilename } from '#shared/utils/export-file'
 
 const props = defineProps<{ link?: Link | null }>()
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 const analysisStore = useDashboardAnalysisStore()
 const events = shallowRef<LogEvent[]>([])
 const loading = shallowRef(false)
@@ -11,8 +14,11 @@ const error = shallowRef(false)
 const retryKey = shallowRef(0)
 const visitorId = shallowRef<string>()
 const sessionId = shallowRef<string>()
+const exporting = shallowRef(false)
+const exportController = new AbortController()
+onBeforeUnmount(() => exportController.abort())
 
-const query = computed(() => ({
+const filters = computed(() => ({
   ...analysisStore.filters,
   id: props.link?.id,
   slug: props.link?.slug ?? analysisStore.filters.slug,
@@ -20,13 +26,36 @@ const query = computed(() => ({
   sessionId: sessionId.value,
   startAt: analysisStore.dateRange.startAt,
   endAt: analysisStore.dateRange.endAt,
-  limit: 100,
 }))
+const query = computed(() => ({ ...filters.value, limit: 100 }))
 
 const dateFormatter = computed(() => new Intl.DateTimeFormat(locale.value, {
   dateStyle: 'short',
   timeStyle: 'medium',
 }))
+
+async function exportClicks() {
+  if (exporting.value)
+    return
+  exporting.value = true
+  const exportFilters = { ...filters.value }
+  try {
+    const csv = await useAPI<string>('/api/logs/export', {
+      responseType: 'text',
+      query: exportFilters,
+      signal: exportController.signal,
+    })
+    if (!exportController.signal.aborted)
+      saveAsCsv(csv, createExportFilename('sink-clicks', 'csv'))
+  }
+  catch {
+    if (!exportController.signal.aborted)
+      toast.error(t('dashboard.analysis.clicks_export_error'))
+  }
+  finally {
+    exporting.value = false
+  }
+}
 
 watch([query, retryKey], async ([currentQuery], _previous, onCleanup) => {
   const controller = new AbortController()
@@ -58,6 +87,18 @@ watch([query, retryKey], async ([currentQuery], _previous, onCleanup) => {
     <CardHeader>
       <CardTitle>{{ $t('dashboard.analysis.clicks_title') }}</CardTitle>
       <CardDescription>{{ $t('dashboard.analysis.clicks_description') }}</CardDescription>
+      <div>
+        <Button type="button" variant="outline" :disabled="exporting" :aria-busy="exporting" @click="exportClicks">
+          <Loader
+            v-if="exporting" aria-hidden="true" class="
+              size-4
+              motion-safe:animate-spin
+            "
+          />
+          <Download v-else aria-hidden="true" class="size-4" />
+          {{ $t(exporting ? 'dashboard.analysis.clicks_exporting' : 'dashboard.analysis.clicks_export') }}
+        </Button>
+      </div>
     </CardHeader>
     <CardContent>
       <div

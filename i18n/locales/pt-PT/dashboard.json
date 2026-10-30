@@ -45,7 +45,10 @@
       "chart_summary_with_visitors": "{totalVisits} visitas e {totalVisitors} visitantes no total. Pico: {peakVisits} visitas às {peakTime}.",
       "locations_summary": "{totalVisits} visitas em {countryCount} regiões.",
       "clicks_title": "Histórico de cliques",
-      "clicks_description": "Até 100 cliques registados mais recentes no período selecionado.",
+      "clicks_description": "Pré-visualização dos últimos 100 cliques. Exporte todos os cliques disponíveis para as datas e filtros selecionados. A Cloudflare aplica amostragem e retenção de três meses.",
+      "clicks_export": "Exportar todos os cliques (CSV)",
+      "clicks_exporting": "A exportar…",
+      "clicks_export_error": "Não foi possível exportar os cliques. Tente novamente.",
       "clicks_error": "Não foi possível carregar o histórico de cliques."
     },
     "date_picker": {

@@ -62,6 +62,12 @@ This page does **not** use WebSocket. It refreshes about every 10 seconds and pl
 
 ## Export
 
+Use **Export all clicks (CSV)** in Click history on Analytics or a link's statistics page to download every available recorded row matching the selected dates and filters, including Visitor ID and Session ID filters. The 100-row limit applies only to the table preview.
+
+The authenticated `/api/logs/export` endpoint accepts the same filters without a row limit. Its CSV includes UTC timestamps, link IDs, slugs, URLs, IPs, User-Agent, location and device fields, Visitor IDs, Session IDs, Client Hints, and `sample_interval`. A sample interval greater than one indicates sampled data; the export cannot recover omitted clicks or records older than Cloudflare's three-month retention. Missing analytics credentials or upstream errors fail the export instead of producing a misleading empty file.
+
+Exports use Analytics Engine's [`LIMIT ALL` and `FORMAT JSONEachRow`](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/statements/) and stream CSV conversion in the Worker. The browser assembles the download in memory, so very large exports may require narrower date ranges.
+
 Download filtered stats as CSV from the dashboard or the stats export API (slug, URL, viewers, views, referrers).
 
 Link JSON export is separate — see [Import and Export](./import-export).

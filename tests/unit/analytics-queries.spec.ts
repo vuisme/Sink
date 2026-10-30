@@ -2,11 +2,13 @@ import type { H3Event } from 'h3'
 import type { FilterQuery, Query } from '../../shared/schemas/query'
 import { describe, expect, it, vi } from 'vitest'
 import {
+  buildClickExportQuery,
   buildCountersQuery,
   buildEventsQuery,
   buildHeatmapQuery,
   buildMetricsQuery,
   buildViewsQuery,
+  StatsExportQuerySchema,
 } from '../../server/utils/analytics-queries'
 import { compileAnalyticsQuery } from '../../server/utils/analytics-sql'
 
@@ -58,6 +60,18 @@ const event = {} as H3Event
 const filters: FilterQuery = { slug: 'abc' }
 
 describe('analytics query builders', () => {
+  it('exports all click rows with the same filters and explicit sampling metadata', () => {
+    const visitorId = crypto.randomUUID()
+    const compiled = compileAnalyticsQuery(buildClickExportQuery({ slug: 'first,second', visitorId, startAt: 100, endAt: 200 }, event))
+    expect(compiled).toContain('blob1 in (\'first\', \'second\')')
+    expect(compiled).toContain(`blob17 in ('${visitorId}')`)
+    expect(compiled).toContain('timestamp >= toDateTime(100)')
+    expect(compiled).toContain('timestamp <= toDateTime(200)')
+    expect(compiled).toContain('_sample_interval as sample_interval')
+    expect(compiled).toContain('blob19 as clientHints')
+    expect(compiled).toContain('order by timestamp desc limit ALL')
+    expect(StatsExportQuerySchema.safeParse({ startAt: 200, endAt: 100 }).success).toBe(false)
+  })
   it('filters click history by visitor, session and multiple slugs', () => {
     const visitorId = crypto.randomUUID()
     const sessionId = crypto.randomUUID()

@@ -45,7 +45,10 @@
       "chart_summary_with_visitors": "Tổng cộng {totalVisits} lượt truy cập và {totalVisitors} khách. Cao nhất: {peakVisits} lượt lúc {peakTime}.",
       "locations_summary": "{totalVisits} lượt truy cập từ {countryCount} khu vực.",
       "clicks_title": "Lịch sử click",
-      "clicks_description": "Tối đa 100 lượt click được ghi nhận gần nhất trong khoảng ngày đã chọn.",
+      "clicks_description": "Xem trước 100 click gần nhất. Xuất tất cả bản ghi còn lưu theo ngày và bộ lọc đã chọn. Cloudflare có lấy mẫu và chỉ lưu dữ liệu ba tháng.",
+      "clicks_export": "Xuất tất cả click (CSV)",
+      "clicks_exporting": "Đang xuất…",
+      "clicks_export_error": "Không thể xuất click. Vui lòng thử lại.",
       "clicks_error": "Không thể tải lịch sử click."
     },
     "date_picker": {

@@ -10,10 +10,14 @@ function escapeCsvCell(value: unknown): string {
   return text
 }
 
+export function generateCsvRow(values: unknown[]): string {
+  return values.map(escapeCsvCell).join(',')
+}
+
 export function generateCsv(headers: string[], rows: unknown[][]): string {
   const lines = [
-    headers.map(escapeCsvCell).join(','),
-    ...rows.map(row => row.map(escapeCsvCell).join(',')),
+    generateCsvRow(headers),
+    ...rows.map(generateCsvRow),
   ]
 
   return `\uFEFF${lines.join('\n')}\n`

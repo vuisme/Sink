@@ -45,7 +45,10 @@
       "chart_summary_with_visitors": "Total {totalVisits} kunjungan dan {totalVisitors} pengunjung. Puncak: {peakVisits} kunjungan pada {peakTime}.",
       "locations_summary": "{totalVisits} kunjungan dari {countryCount} wilayah.",
       "clicks_title": "Riwayat klik",
-      "clicks_description": "Hingga 100 klik tercatat terbaru dalam rentang tanggal yang dipilih.",
+      "clicks_description": "Pratinjau 100 klik terbaru. Ekspor semua klik yang tersedia sesuai tanggal dan filter. Cloudflare menerapkan pengambilan sampel dan retensi tiga bulan.",
+      "clicks_export": "Ekspor semua klik (CSV)",
+      "clicks_exporting": "Mengekspor…",
+      "clicks_export_error": "Gagal mengekspor klik. Coba lagi.",
       "clicks_error": "Gagal memuat riwayat klik."
     },
     "date_picker": {

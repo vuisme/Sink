@@ -45,7 +45,10 @@
       "chart_summary_with_visitors": "{totalVisits} visits and {totalVisitors} visitors total. Peak: {peakVisits} visits at {peakTime}.",
       "locations_summary": "{totalVisits} visits across {countryCount} locations.",
       "clicks_title": "Click history",
-      "clicks_description": "Up to 100 latest recorded clicks in the selected date range.",
+      "clicks_description": "Preview of the 100 latest recorded clicks. Export all available clicks matching the selected dates and filters. Cloudflare sampling and three-month retention apply.",
+      "clicks_export": "Export all clicks (CSV)",
+      "clicks_exporting": "Exporting…",
+      "clicks_export_error": "Could not export clicks. Please try again.",
       "clicks_error": "Failed to load click history."
     },
     "date_picker": {
