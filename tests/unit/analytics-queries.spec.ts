@@ -69,7 +69,7 @@ describe('analytics query builders', () => {
     expect(compiled).toContain('timestamp <= toDateTime(200)')
     expect(compiled).toContain('_sample_interval as sample_interval')
     expect(compiled).toContain('blob19 as clientHints')
-    expect(compiled).toContain('order by timestamp desc limit ALL')
+    expect(compiled).toContain('order by timestamp_utc desc limit ALL')
     expect(StatsExportQuerySchema.safeParse({ startAt: 200, endAt: 100 }).success).toBe(false)
   })
   it('filters click history by visitor, session and multiple slugs', () => {

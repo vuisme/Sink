@@ -148,7 +148,7 @@ export function buildClickExportQuery(query: StatsExportQuery, event: H3Event) {
       ...Object.entries(doublesMap).map(([column, name]) => sql.ref(column).as(name)),
       sql.ref('_sample_interval').as('sample_interval'),
     ])
-    .orderBy('timestamp', 'desc')
+    .orderBy('timestamp_utc', 'desc')
     .limit(sql`ALL`)
 }
 
